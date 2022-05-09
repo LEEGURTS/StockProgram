@@ -8,17 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace StockProgram
 {
     public partial class Form1 : Form
     {
-        List<List<string>> stock = new List<List<string>>(); //시가,고가,종가,저가;
+        List<List<string>> stock = new List<List<string>>(); //시가,고가,저가,종가;
         List<Panel> plist; 
         public Form1()
         {
             InitializeComponent();
-           
         }
         private double getCompare(double before, double after)
         {
@@ -37,10 +37,8 @@ namespace StockProgram
 
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            makePanel();
-            
-            string[] lines = System.IO.File.ReadAllLines(@"C:/Users/rmstj/Desktop/Stock.txt");
+        {         
+            string[] lines = System.IO.File.ReadAllLines(@"C:/Users/rmstj/Desktop/Stock.txt"); //임시 데이터 생성부
             int k = 0;
             foreach (string str in lines)
             {
@@ -51,7 +49,6 @@ namespace StockProgram
                     if(str2.IndexOf('\"') == -1 && str2.IndexOf("]") == -1 && str2.IndexOf("\r") == -1 && str2.IndexOf("\t") == -1)
                     {
                         data.Add(str2.Trim());
-                        Console.WriteLine(str2);
                     }
                     else
                     {
@@ -64,31 +61,44 @@ namespace StockProgram
                 }
                 stock.Add(data);               
             }
-            editPanel(0);
-        }
-        private void makePanel() //20개의 판넬을 생성해주는 함수
-        {
-            plist = new List<Panel>();
-            for (int i = 0; i < 20; i++)
+            Series chartSeries;
+            chartSeries = chart1.Series["Series1"];
+            int idx = 0;
+            foreach(List<string> now in stock)
             {
-                plist.Add(new Panel());
-                plist[i].Width = 30;
-                plist[i].Height = 100;
-                plist[i].Location = new Point(100 + i * 40,350); //위에서 아래로 그림.
-                plist[i].BackColor = Color.Red;      
-                this.Controls.Add(plist[i]);
+                chartSeries.Points.AddXY(idx, int.Parse(now[1]));
+                chartSeries.Points[idx].YValues[1] = int.Parse(now[2]);
+                chartSeries.Points[idx].YValues[2] = int.Parse(now[0]);
+                chartSeries.Points[idx].YValues[3] = int.Parse(now[3]);
+                idx++;
+            }
+            chartSeries.CustomProperties = "PriceDownColor=Blue,PriceUpColor=Red";
+            chartSeries.Palette = new ChartColorPalette();
+            chart1.AxisViewChanged += ViewChanged;
+        }  
+        private void ViewChanged(object sender,ViewEventArgs e)
+        {
+            if (sender.Equals(chart1))
+            {
+                int startPos = (int)e.Axis.ScaleView.ViewMinimum;
+                int endPos = (int)e.Axis.ScaleView.ViewMaximum;
+                int max = 0;
+                int min = 420000000;
+                for (int i = startPos-1; i < endPos; i++)
+                {
+                    if (i >= stock.Count)
+                        break;
+                    if (i < 0)
+                        i = 0;
+                    if (int.Parse(stock[i][1]) > max)
+                        max = int.Parse(stock[i][1]);
+                    if (int.Parse(stock[i][3]) < min)
+                        min = int.Parse(stock[i][1]);
+
+                }
+                this.chart1.ChartAreas[0].AxisY.Maximum = (max*11)/10;
+                this.chart1.ChartAreas[0].AxisY.Minimum = (min*9)/10;
             }
         }
-        private void editPanel(int index) // stock 리스트의 시작 포인트부터 20개의 값을 이용해 팬널 수정하는 함수(21개 받아오기)
-        {
-            
-            for (int i = index; i < index + 20; i++)
-            {
-                float min = Math.Min(float.Parse(stock[i][0]),float.Parse(stock[i][0]));
-                float max = Math.Max(float.Parse(stock[i][0]), float.Parse(stock[i][0]));
-                plist[i].Top = (int)(max/10);
-                plist[i].Height = (int)min/10;
-            }
-        }           
     }
 }
