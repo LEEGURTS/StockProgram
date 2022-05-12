@@ -1,0 +1,15 @@
+C:\Users\Oculus\source\repos\kiwoom\bin\Debug\kiwoom.exe.config
+C:\Users\Oculus\source\repos\kiwoom\bin\Debug\kiwoom.exe
+C:\Users\Oculus\source\repos\kiwoom\bin\Debug\kiwoom.pdb
+C:\Users\Oculus\source\repos\kiwoom\bin\Debug\Interop.KHOpenAPILib.dll
+C:\Users\Oculus\source\repos\kiwoom\bin\Debug\AxInterop.KHOpenAPILib.dll
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\kiwoom.csproj.AssemblyReference.cache
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\Interop.KHOpenAPILib.dll
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\AxInterop.KHOpenAPILib.dll
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\kiwoom.csproj.ResolveComReference.cache
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\kiwoom.Properties.Resources.resources
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\kiwoom.csproj.GenerateResource.cache
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\kiwoom.csproj.CoreCompileInputs.cache
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\kiwoom.exe
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\kiwoom.pdb
+C:\Users\Oculus\source\repos\kiwoom\obj\Debug\kiwoom.login.resources
