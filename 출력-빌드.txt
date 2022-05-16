@@ -1,0 +1,6 @@
+﻿빌드 시작...
+1>------ 빌드 시작: 프로젝트: Api_test01, 구성: Debug Any CPU ------
+1>  COM 참조 'KHOpenAPILib'은(는) ActiveX 컨트롤 'AxKHOpenAPILib'에 대한 interop 어셈블리이지만 /link 플래그로 컴파일러에 의해 링크되도록 표시되어 있습니다. 이 COM 참조는 참조로 간주되지만 링크되지 않습니다.
+1>C:\Users\rmstj\Desktop\Api_test01\Form2.cs(37,34,37,36): warning CS0168: 'ex' 변수가 선언되었지만 사용되지 않았습니다.
+1>  Api_test01 -> C:\Users\rmstj\Desktop\Api_test01\bin\Debug\Api_test01.exe
+========== 빌드: 성공 1, 실패 0, 최신 0, 생략 0 ==========
