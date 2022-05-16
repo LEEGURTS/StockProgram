@@ -154,6 +154,7 @@ namespace Api_test01
             MessageBox.Show(종목코드.Length.ToString()+"개 업뎃함!");
             Child child = new Child(this);
             child.Owner = this;
+            child.BackColor = this.BackColor;
             childToMulti(child);
         }
 

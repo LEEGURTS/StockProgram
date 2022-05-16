@@ -572,7 +572,7 @@ namespace Api_test01
             this.MultiPanel.Location = new System.Drawing.Point(268, 91);
             this.MultiPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MultiPanel.Name = "MultiPanel";
-            this.MultiPanel.Size = new System.Drawing.Size(503, 560);
+            this.MultiPanel.Size = new System.Drawing.Size(500, 560);
             this.MultiPanel.TabIndex = 16;
             // 
             // panel1

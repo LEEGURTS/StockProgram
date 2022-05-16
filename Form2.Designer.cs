@@ -31,15 +31,15 @@ namespace Api_test01
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.검색_txtBox = new System.Windows.Forms.TextBox();
             this.검색_btn = new System.Windows.Forms.Button();
+            this.검색_txtBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.추가02_btn = new System.Windows.Forms.Button();
+            this.현재가02_label = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.종목검색_datagridview = new System.Windows.Forms.DataGridView();
             this.종목검색_이름 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.종목검색_코드 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
-            this.현재가02_label = new System.Windows.Forms.Label();
+            this.추가02_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -48,6 +48,8 @@ namespace Api_test01
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -58,6 +60,8 @@ namespace Api_test01
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -71,13 +75,6 @@ namespace Api_test01
             this.tableLayoutPanel1.Size = new System.Drawing.Size(514, 30);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // 검색_txtBox
-            // 
-            this.검색_txtBox.Location = new System.Drawing.Point(4, 4);
-            this.검색_txtBox.Name = "검색_txtBox";
-            this.검색_txtBox.Size = new System.Drawing.Size(351, 21);
-            this.검색_txtBox.TabIndex = 5;
-            // 
             // 검색_btn
             // 
             this.검색_btn.Location = new System.Drawing.Point(362, 4);
@@ -88,8 +85,18 @@ namespace Api_test01
             this.검색_btn.UseVisualStyleBackColor = true;
             this.검색_btn.Click += new System.EventHandler(this.검색_btn_Click);
             // 
+            // 검색_txtBox
+            // 
+            this.검색_txtBox.Location = new System.Drawing.Point(4, 4);
+            this.검색_txtBox.Name = "검색_txtBox";
+            this.검색_txtBox.Size = new System.Drawing.Size(351, 21);
+            this.검색_txtBox.TabIndex = 5;
+            // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.현재가02_label);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.종목검색_datagridview);
@@ -101,15 +108,27 @@ namespace Api_test01
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "종목 리스트";
             // 
-            // 추가02_btn
+            // 현재가02_label
             // 
-            this.추가02_btn.Location = new System.Drawing.Point(364, 424);
-            this.추가02_btn.Name = "추가02_btn";
-            this.추가02_btn.Size = new System.Drawing.Size(146, 29);
-            this.추가02_btn.TabIndex = 0;
-            this.추가02_btn.Text = "관심주식 추가";
-            this.추가02_btn.UseVisualStyleBackColor = true;
-            this.추가02_btn.Click += new System.EventHandler(this.추가02_btn_Click);
+            this.현재가02_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.현재가02_label.AutoSize = true;
+            this.현재가02_label.Location = new System.Drawing.Point(107, 432);
+            this.현재가02_label.Name = "현재가02_label";
+            this.현재가02_label.Size = new System.Drawing.Size(11, 12);
+            this.현재가02_label.TabIndex = 6;
+            this.현재가02_label.Text = "0";
+            this.현재가02_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 432);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "현재가";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // 종목검색_datagridview
             // 
@@ -117,6 +136,9 @@ namespace Api_test01
             this.종목검색_datagridview.AllowUserToDeleteRows = false;
             this.종목검색_datagridview.AllowUserToResizeColumns = false;
             this.종목검색_datagridview.AllowUserToResizeRows = false;
+            this.종목검색_datagridview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.종목검색_datagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.종목검색_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.종목검색_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -145,31 +167,16 @@ namespace Api_test01
             this.종목검색_코드.Name = "종목검색_코드";
             this.종목검색_코드.ReadOnly = true;
             // 
-            // label5
+            // 추가02_btn
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 432);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "현재가";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // 현재가02_label
-            // 
-            this.현재가02_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.현재가02_label.AutoSize = true;
-            this.현재가02_label.Location = new System.Drawing.Point(107, 432);
-            this.현재가02_label.Name = "현재가02_label";
-            this.현재가02_label.Size = new System.Drawing.Size(11, 12);
-            this.현재가02_label.TabIndex = 6;
-            this.현재가02_label.Text = "0";
-            this.현재가02_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.추가02_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.추가02_btn.Location = new System.Drawing.Point(364, 424);
+            this.추가02_btn.Name = "추가02_btn";
+            this.추가02_btn.Size = new System.Drawing.Size(146, 29);
+            this.추가02_btn.TabIndex = 0;
+            this.추가02_btn.Text = "관심주식 추가";
+            this.추가02_btn.UseVisualStyleBackColor = true;
+            this.추가02_btn.Click += new System.EventHandler(this.추가02_btn_Click);
             // 
             // Child
             // 
