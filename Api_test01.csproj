@@ -86,6 +86,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="KoPub Dotum Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="KoPub Dotum Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="KoPub Dotum Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,6 +141,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1564506_close_exit_logout_power_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newspaper-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pie-chart-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-12-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

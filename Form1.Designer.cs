@@ -43,7 +43,6 @@ namespace Api_test01
             this.전체손익_label = new System.Windows.Forms.Label();
             this.로그인_btn = new System.Windows.Forms.Button();
             this.계좌정보조회_btn = new System.Windows.Forms.Button();
-            this.추가01_btn = new System.Windows.Forms.Button();
             this.매수매도_table = new System.Windows.Forms.TableLayoutPanel();
             this.매수_btn = new System.Windows.Forms.Button();
             this.매도_btn = new System.Windows.Forms.Button();
@@ -62,18 +61,19 @@ namespace Api_test01
             this.사용자이름_label = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.MultiPanel = new System.Windows.Forms.Panel();
-            this.btnChart = new System.Windows.Forms.Button();
-            this.btnIESearch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMakeSmall = new System.Windows.Forms.Button();
             this.btnMakeBig = new System.Windows.Forms.Button();
             this.삭제_btn = new System.Windows.Forms.Button();
+            this.추가01_btn = new System.Windows.Forms.Button();
             this.관심주식_datagridview = new System.Windows.Forms.DataGridView();
             this.관심종목_코드 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.관심종목_이름 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnIESearch = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnChart = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.axKHOpenAPI1)).BeginInit();
             this.계좌정보_table.SuspendLayout();
             this.매수매도_table.SuspendLayout();
@@ -81,16 +81,17 @@ namespace Api_test01
             ((System.ComponentModel.ISupportInitialize)(this.가격_numeric)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.관심주식_datagridview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // axKHOpenAPI1
             // 
+            this.axKHOpenAPI1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.axKHOpenAPI1.Enabled = true;
             this.axKHOpenAPI1.Location = new System.Drawing.Point(1012, 297);
-            this.axKHOpenAPI1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.axKHOpenAPI1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.axKHOpenAPI1.Name = "axKHOpenAPI1";
             this.axKHOpenAPI1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axKHOpenAPI1.OcxState")));
             this.axKHOpenAPI1.Size = new System.Drawing.Size(75, 26);
@@ -102,16 +103,18 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.계좌_label.AutoSize = true;
-            this.계좌_label.BackColor = System.Drawing.SystemColors.Control;
-            this.계좌_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.계좌_label.Location = new System.Drawing.Point(1008, 59);
+            this.계좌_label.BackColor = System.Drawing.Color.White;
+            this.계좌_label.Font = new System.Drawing.Font("굴림체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.계좌_label.Location = new System.Drawing.Point(806, 39);
+            this.계좌_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.계좌_label.Name = "계좌_label";
-            this.계좌_label.Size = new System.Drawing.Size(0, 20);
+            this.계좌_label.Size = new System.Drawing.Size(0, 16);
             this.계좌_label.TabIndex = 3;
             this.계좌_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // 계좌정보_table
             // 
+            this.계좌정보_table.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.계좌정보_table.BackColor = System.Drawing.Color.White;
             this.계좌정보_table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.계좌정보_table.ColumnCount = 2;
@@ -125,15 +128,15 @@ namespace Api_test01
             this.계좌정보_table.Controls.Add(this.총매입_label, 1, 1);
             this.계좌정보_table.Controls.Add(this.총평가_label, 1, 2);
             this.계좌정보_table.Controls.Add(this.전체손익_label, 1, 3);
-            this.계좌정보_table.Location = new System.Drawing.Point(985, 115);
-            this.계좌정보_table.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.계좌정보_table.Location = new System.Drawing.Point(788, 92);
+            this.계좌정보_table.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.계좌정보_table.Name = "계좌정보_table";
             this.계좌정보_table.RowCount = 4;
             this.계좌정보_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.계좌정보_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.계좌정보_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.계좌정보_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.계좌정보_table.Size = new System.Drawing.Size(255, 228);
+            this.계좌정보_table.Size = new System.Drawing.Size(204, 182);
             this.계좌정보_table.TabIndex = 2;
             // 
             // label3
@@ -143,9 +146,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(4, 1);
+            this.label3.Location = new System.Drawing.Point(3, 1);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 55);
+            this.label3.Size = new System.Drawing.Size(76, 44);
             this.label3.TabIndex = 0;
             this.label3.Text = "자본(예수금)";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -157,9 +161,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(4, 57);
+            this.label4.Location = new System.Drawing.Point(3, 46);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 55);
+            this.label4.Size = new System.Drawing.Size(76, 44);
             this.label4.TabIndex = 1;
             this.label4.Text = "총매입금액";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,9 +176,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(4, 113);
+            this.label5.Location = new System.Drawing.Point(3, 91);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 55);
+            this.label5.Size = new System.Drawing.Size(76, 44);
             this.label5.TabIndex = 2;
             this.label5.Text = "총평가금액";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -185,9 +191,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(4, 169);
+            this.label6.Location = new System.Drawing.Point(3, 136);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 58);
+            this.label6.Size = new System.Drawing.Size(76, 45);
             this.label6.TabIndex = 3;
             this.label6.Text = "전체손익금액";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -199,9 +206,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.자본_label.AutoSize = true;
             this.자본_label.BackColor = System.Drawing.Color.White;
-            this.자본_label.Location = new System.Drawing.Point(105, 1);
+            this.자본_label.Location = new System.Drawing.Point(84, 1);
+            this.자본_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.자본_label.Name = "자본_label";
-            this.자본_label.Size = new System.Drawing.Size(146, 55);
+            this.자본_label.Size = new System.Drawing.Size(117, 44);
             this.자본_label.TabIndex = 4;
             this.자본_label.Text = "0";
             this.자본_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -213,9 +221,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.총매입_label.AutoSize = true;
             this.총매입_label.BackColor = System.Drawing.Color.White;
-            this.총매입_label.Location = new System.Drawing.Point(105, 57);
+            this.총매입_label.Location = new System.Drawing.Point(84, 46);
+            this.총매입_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.총매입_label.Name = "총매입_label";
-            this.총매입_label.Size = new System.Drawing.Size(146, 55);
+            this.총매입_label.Size = new System.Drawing.Size(117, 44);
             this.총매입_label.TabIndex = 5;
             this.총매입_label.Text = "0";
             this.총매입_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -227,9 +236,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.총평가_label.AutoSize = true;
             this.총평가_label.BackColor = System.Drawing.Color.White;
-            this.총평가_label.Location = new System.Drawing.Point(105, 113);
+            this.총평가_label.Location = new System.Drawing.Point(84, 91);
+            this.총평가_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.총평가_label.Name = "총평가_label";
-            this.총평가_label.Size = new System.Drawing.Size(146, 55);
+            this.총평가_label.Size = new System.Drawing.Size(117, 44);
             this.총평가_label.TabIndex = 6;
             this.총평가_label.Text = "0";
             this.총평가_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -241,54 +251,49 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.전체손익_label.AutoSize = true;
             this.전체손익_label.BackColor = System.Drawing.Color.White;
-            this.전체손익_label.Location = new System.Drawing.Point(105, 169);
+            this.전체손익_label.Location = new System.Drawing.Point(84, 136);
+            this.전체손익_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.전체손익_label.Name = "전체손익_label";
-            this.전체손익_label.Size = new System.Drawing.Size(146, 58);
+            this.전체손익_label.Size = new System.Drawing.Size(117, 45);
             this.전체손익_label.TabIndex = 7;
             this.전체손익_label.Text = "0";
             this.전체손익_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // 로그인_btn
             // 
-            this.로그인_btn.Location = new System.Drawing.Point(1190, 76);
-            this.로그인_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.로그인_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(106)))), ((int)(((byte)(206)))));
+            this.로그인_btn.FlatAppearance.BorderSize = 0;
+            this.로그인_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.로그인_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.로그인_btn.Location = new System.Drawing.Point(952, 61);
+            this.로그인_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.로그인_btn.Name = "로그인_btn";
-            this.로그인_btn.Size = new System.Drawing.Size(58, 30);
+            this.로그인_btn.Size = new System.Drawing.Size(46, 24);
             this.로그인_btn.TabIndex = 4;
             this.로그인_btn.Text = "로그인";
-            this.로그인_btn.UseVisualStyleBackColor = true;
+            this.로그인_btn.UseVisualStyleBackColor = false;
             this.로그인_btn.Click += new System.EventHandler(this.로그인_btn_Click);
             // 
             // 계좌정보조회_btn
             // 
+            this.계좌정보조회_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(106)))), ((int)(((byte)(206)))));
             this.계좌정보조회_btn.Enabled = false;
-            this.계좌정보조회_btn.Location = new System.Drawing.Point(1054, 78);
-            this.계좌정보조회_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.계좌정보조회_btn.FlatAppearance.BorderSize = 0;
+            this.계좌정보조회_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.계좌정보조회_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.계좌정보조회_btn.Location = new System.Drawing.Point(843, 62);
+            this.계좌정보조회_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.계좌정보조회_btn.Name = "계좌정보조회_btn";
-            this.계좌정보조회_btn.Size = new System.Drawing.Size(129, 29);
+            this.계좌정보조회_btn.Size = new System.Drawing.Size(103, 23);
             this.계좌정보조회_btn.TabIndex = 5;
             this.계좌정보조회_btn.Text = "계좌정보 조회";
-            this.계좌정보조회_btn.UseVisualStyleBackColor = true;
+            this.계좌정보조회_btn.UseVisualStyleBackColor = false;
+            this.계좌정보조회_btn.Visible = false;
             this.계좌정보조회_btn.Click += new System.EventHandler(this.계좌정보조회_btn_Click);
-            // 
-            // 추가01_btn
-            // 
-            this.추가01_btn.FlatAppearance.BorderSize = 0;
-            this.추가01_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.추가01_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.추가01_btn.Location = new System.Drawing.Point(55, 274);
-            this.추가01_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.추가01_btn.Name = "추가01_btn";
-            this.추가01_btn.Size = new System.Drawing.Size(214, 51);
-            this.추가01_btn.TabIndex = 9;
-            this.추가01_btn.Text = "검색";
-            this.추가01_btn.UseVisualStyleBackColor = true;
-            this.추가01_btn.Click += new System.EventHandler(this.추가_btn_Click);
-            this.추가01_btn.MouseEnter += new System.EventHandler(this.추가01_btn_MouseEnter);
-            this.추가01_btn.MouseLeave += new System.EventHandler(this.추가01_btn_MouseLeave);
             // 
             // 매수매도_table
             // 
+            this.매수매도_table.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.매수매도_table.BackColor = System.Drawing.Color.White;
             this.매수매도_table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.매수매도_table.ColumnCount = 2;
@@ -308,8 +313,8 @@ namespace Api_test01
             this.매수매도_table.Controls.Add(this.전일대비_label, 1, 3);
             this.매수매도_table.Controls.Add(this.수량_numeric, 1, 4);
             this.매수매도_table.Controls.Add(this.가격_numeric, 1, 5);
-            this.매수매도_table.Location = new System.Drawing.Point(981, 414);
-            this.매수매도_table.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.매수매도_table.Location = new System.Drawing.Point(785, 331);
+            this.매수매도_table.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.매수매도_table.Name = "매수매도_table";
             this.매수매도_table.RowCount = 7;
             this.매수매도_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -319,7 +324,7 @@ namespace Api_test01
             this.매수매도_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.433962F));
             this.매수매도_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.805032F));
             this.매수매도_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.15723F));
-            this.매수매도_table.Size = new System.Drawing.Size(261, 399);
+            this.매수매도_table.Size = new System.Drawing.Size(209, 319);
             this.매수매도_table.TabIndex = 10;
             // 
             // 매수_btn
@@ -328,10 +333,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.매수_btn.Enabled = false;
-            this.매수_btn.Location = new System.Drawing.Point(4, 301);
-            this.매수_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.매수_btn.Location = new System.Drawing.Point(3, 242);
+            this.매수_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.매수_btn.Name = "매수_btn";
-            this.매수_btn.Size = new System.Drawing.Size(123, 93);
+            this.매수_btn.Size = new System.Drawing.Size(99, 73);
             this.매수_btn.TabIndex = 0;
             this.매수_btn.Text = "매수";
             this.매수_btn.UseVisualStyleBackColor = true;
@@ -343,10 +348,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.매도_btn.Enabled = false;
-            this.매도_btn.Location = new System.Drawing.Point(134, 301);
-            this.매도_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.매도_btn.Location = new System.Drawing.Point(107, 242);
+            this.매도_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.매도_btn.Name = "매도_btn";
-            this.매도_btn.Size = new System.Drawing.Size(123, 93);
+            this.매도_btn.Size = new System.Drawing.Size(99, 73);
             this.매도_btn.TabIndex = 1;
             this.매도_btn.Text = "매도";
             this.매도_btn.UseVisualStyleBackColor = true;
@@ -359,9 +364,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(4, 1);
+            this.label13.Location = new System.Drawing.Point(3, 1);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(123, 55);
+            this.label13.Size = new System.Drawing.Size(99, 44);
             this.label13.TabIndex = 2;
             this.label13.Text = "종목이름";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -373,9 +379,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(4, 57);
+            this.label14.Location = new System.Drawing.Point(3, 46);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(123, 55);
+            this.label14.Size = new System.Drawing.Size(99, 44);
             this.label14.TabIndex = 3;
             this.label14.Text = "보유수량";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -387,9 +394,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(4, 113);
+            this.label15.Location = new System.Drawing.Point(3, 91);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(123, 55);
+            this.label15.Size = new System.Drawing.Size(99, 44);
             this.label15.TabIndex = 4;
             this.label15.Text = "현재가";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -401,9 +409,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(4, 169);
+            this.label16.Location = new System.Drawing.Point(3, 136);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(123, 55);
+            this.label16.Size = new System.Drawing.Size(99, 44);
             this.label16.TabIndex = 5;
             this.label16.Text = "전일대비";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -415,9 +424,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(4, 225);
+            this.label17.Location = new System.Drawing.Point(3, 181);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(123, 36);
+            this.label17.Size = new System.Drawing.Size(99, 29);
             this.label17.TabIndex = 6;
             this.label17.Text = "수량";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -429,9 +439,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(4, 262);
+            this.label18.Location = new System.Drawing.Point(3, 211);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(123, 34);
+            this.label18.Size = new System.Drawing.Size(99, 27);
             this.label18.TabIndex = 7;
             this.label18.Text = "가격";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -443,9 +454,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.종목이름01_label.AutoSize = true;
             this.종목이름01_label.BackColor = System.Drawing.Color.White;
-            this.종목이름01_label.Location = new System.Drawing.Point(134, 1);
+            this.종목이름01_label.Location = new System.Drawing.Point(107, 1);
+            this.종목이름01_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.종목이름01_label.Name = "종목이름01_label";
-            this.종목이름01_label.Size = new System.Drawing.Size(123, 55);
+            this.종목이름01_label.Size = new System.Drawing.Size(99, 44);
             this.종목이름01_label.TabIndex = 8;
             this.종목이름01_label.Text = "0";
             this.종목이름01_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -457,9 +469,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.보유수량_label.AutoSize = true;
             this.보유수량_label.BackColor = System.Drawing.Color.White;
-            this.보유수량_label.Location = new System.Drawing.Point(134, 57);
+            this.보유수량_label.Location = new System.Drawing.Point(107, 46);
+            this.보유수량_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.보유수량_label.Name = "보유수량_label";
-            this.보유수량_label.Size = new System.Drawing.Size(123, 55);
+            this.보유수량_label.Size = new System.Drawing.Size(99, 44);
             this.보유수량_label.TabIndex = 9;
             this.보유수량_label.Text = "0";
             this.보유수량_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -471,9 +484,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.현재가01_label.AutoSize = true;
             this.현재가01_label.BackColor = System.Drawing.Color.White;
-            this.현재가01_label.Location = new System.Drawing.Point(134, 113);
+            this.현재가01_label.Location = new System.Drawing.Point(107, 91);
+            this.현재가01_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.현재가01_label.Name = "현재가01_label";
-            this.현재가01_label.Size = new System.Drawing.Size(123, 55);
+            this.현재가01_label.Size = new System.Drawing.Size(99, 44);
             this.현재가01_label.TabIndex = 10;
             this.현재가01_label.Text = "0";
             this.현재가01_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -485,9 +499,10 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Right)));
             this.전일대비_label.AutoSize = true;
             this.전일대비_label.BackColor = System.Drawing.Color.White;
-            this.전일대비_label.Location = new System.Drawing.Point(134, 169);
+            this.전일대비_label.Location = new System.Drawing.Point(107, 136);
+            this.전일대비_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.전일대비_label.Name = "전일대비_label";
-            this.전일대비_label.Size = new System.Drawing.Size(123, 55);
+            this.전일대비_label.Size = new System.Drawing.Size(99, 44);
             this.전일대비_label.TabIndex = 11;
             this.전일대비_label.Text = "0";
             this.전일대비_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -497,15 +512,15 @@ namespace Api_test01
             this.수량_numeric.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.수량_numeric.Location = new System.Drawing.Point(134, 229);
-            this.수량_numeric.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.수량_numeric.Location = new System.Drawing.Point(107, 184);
+            this.수량_numeric.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.수량_numeric.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
             this.수량_numeric.Name = "수량_numeric";
-            this.수량_numeric.Size = new System.Drawing.Size(123, 25);
+            this.수량_numeric.Size = new System.Drawing.Size(99, 21);
             this.수량_numeric.TabIndex = 12;
             // 
             // 가격_numeric
@@ -513,15 +528,15 @@ namespace Api_test01
             this.가격_numeric.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.가격_numeric.Location = new System.Drawing.Point(134, 266);
-            this.가격_numeric.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.가격_numeric.Location = new System.Drawing.Point(107, 214);
+            this.가격_numeric.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.가격_numeric.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
             this.가격_numeric.Name = "가격_numeric";
-            this.가격_numeric.Size = new System.Drawing.Size(123, 25);
+            this.가격_numeric.Size = new System.Drawing.Size(99, 21);
             this.가격_numeric.TabIndex = 13;
             // 
             // 사용자이름_label
@@ -530,11 +545,12 @@ namespace Api_test01
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.사용자이름_label.AutoSize = true;
-            this.사용자이름_label.BackColor = System.Drawing.SystemColors.Control;
-            this.사용자이름_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.사용자이름_label.Location = new System.Drawing.Point(1008, 20);
+            this.사용자이름_label.BackColor = System.Drawing.Color.White;
+            this.사용자이름_label.Font = new System.Drawing.Font("굴림체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.사용자이름_label.Location = new System.Drawing.Point(806, 16);
+            this.사용자이름_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.사용자이름_label.Name = "사용자이름_label";
-            this.사용자이름_label.Size = new System.Drawing.Size(0, 20);
+            this.사용자이름_label.Size = new System.Drawing.Size(0, 16);
             this.사용자이름_label.TabIndex = 2;
             this.사용자이름_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -544,51 +560,20 @@ namespace Api_test01
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(66)))), ((int)(((byte)(194)))));
             this.label7.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(114, 45);
+            this.label7.Location = new System.Drawing.Point(91, 36);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(173, 24);
+            this.label7.Size = new System.Drawing.Size(135, 19);
             this.label7.TabIndex = 13;
             this.label7.Text = "Stock Simulator";
             // 
             // MultiPanel
             // 
-            this.MultiPanel.Location = new System.Drawing.Point(335, 114);
-            this.MultiPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MultiPanel.Location = new System.Drawing.Point(268, 91);
+            this.MultiPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MultiPanel.Name = "MultiPanel";
-            this.MultiPanel.Size = new System.Drawing.Size(629, 700);
+            this.MultiPanel.Size = new System.Drawing.Size(503, 560);
             this.MultiPanel.TabIndex = 16;
-            // 
-            // btnChart
-            // 
-            this.btnChart.FlatAppearance.BorderSize = 0;
-            this.btnChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChart.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnChart.Location = new System.Drawing.Point(55, 134);
-            this.btnChart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnChart.Name = "btnChart";
-            this.btnChart.Size = new System.Drawing.Size(214, 51);
-            this.btnChart.TabIndex = 17;
-            this.btnChart.Text = "차트";
-            this.btnChart.UseVisualStyleBackColor = true;
-            this.btnChart.Click += new System.EventHandler(this.btnChart_Click);
-            this.btnChart.MouseEnter += new System.EventHandler(this.btnChart_MouseEnter);
-            this.btnChart.MouseLeave += new System.EventHandler(this.btnChart_MouseLeave);
-            // 
-            // btnIESearch
-            // 
-            this.btnIESearch.FlatAppearance.BorderSize = 0;
-            this.btnIESearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIESearch.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnIESearch.Location = new System.Drawing.Point(55, 204);
-            this.btnIESearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnIESearch.Name = "btnIESearch";
-            this.btnIESearch.Size = new System.Drawing.Size(214, 51);
-            this.btnIESearch.TabIndex = 20;
-            this.btnIESearch.Text = "뉴스";
-            this.btnIESearch.UseVisualStyleBackColor = true;
-            this.btnIESearch.Click += new System.EventHandler(this.btnIESearch_Click);
-            this.btnIESearch.MouseEnter += new System.EventHandler(this.btnIESearch_MouseEnter);
-            this.btnIESearch.MouseLeave += new System.EventHandler(this.btnIESearch_MouseLeave);
             // 
             // panel1
             // 
@@ -599,12 +584,13 @@ namespace Api_test01
             this.panel1.Controls.Add(this.추가01_btn);
             this.panel1.Controls.Add(this.관심주식_datagridview);
             this.panel1.Controls.Add(this.btnIESearch);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnChart);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 830);
+            this.panel1.Size = new System.Drawing.Size(251, 664);
             this.panel1.TabIndex = 21;
             // 
             // btnMakeSmall
@@ -613,10 +599,10 @@ namespace Api_test01
             this.btnMakeSmall.FlatAppearance.BorderSize = 0;
             this.btnMakeSmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMakeSmall.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnMakeSmall.Location = new System.Drawing.Point(33, 449);
-            this.btnMakeSmall.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnMakeSmall.Location = new System.Drawing.Point(26, 359);
+            this.btnMakeSmall.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnMakeSmall.Name = "btnMakeSmall";
-            this.btnMakeSmall.Size = new System.Drawing.Size(126, 51);
+            this.btnMakeSmall.Size = new System.Drawing.Size(101, 41);
             this.btnMakeSmall.TabIndex = 22;
             this.btnMakeSmall.Text = "축소";
             this.btnMakeSmall.UseVisualStyleBackColor = false;
@@ -628,10 +614,10 @@ namespace Api_test01
             this.btnMakeBig.FlatAppearance.BorderSize = 0;
             this.btnMakeBig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMakeBig.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnMakeBig.Location = new System.Drawing.Point(166, 449);
-            this.btnMakeBig.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnMakeBig.Location = new System.Drawing.Point(133, 359);
+            this.btnMakeBig.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnMakeBig.Name = "btnMakeBig";
-            this.btnMakeBig.Size = new System.Drawing.Size(121, 51);
+            this.btnMakeBig.Size = new System.Drawing.Size(97, 41);
             this.btnMakeBig.TabIndex = 21;
             this.btnMakeBig.Text = "확대";
             this.btnMakeBig.UseVisualStyleBackColor = false;
@@ -643,15 +629,34 @@ namespace Api_test01
             this.삭제_btn.FlatAppearance.BorderSize = 0;
             this.삭제_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.삭제_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.삭제_btn.Location = new System.Drawing.Point(33, 756);
-            this.삭제_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.삭제_btn.Location = new System.Drawing.Point(26, 605);
+            this.삭제_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.삭제_btn.Name = "삭제_btn";
-            this.삭제_btn.Size = new System.Drawing.Size(254, 51);
+            this.삭제_btn.Size = new System.Drawing.Size(203, 41);
             this.삭제_btn.TabIndex = 10;
             this.삭제_btn.Text = "삭제";
             this.삭제_btn.UseVisualStyleBackColor = true;
             this.삭제_btn.Visible = false;
             this.삭제_btn.Click += new System.EventHandler(this.삭제_btn_Click);
+            // 
+            // 추가01_btn
+            // 
+            this.추가01_btn.FlatAppearance.BorderSize = 0;
+            this.추가01_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.추가01_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.추가01_btn.Image = global::Api_test01.Properties.Resources.search_12_24;
+            this.추가01_btn.Location = new System.Drawing.Point(44, 219);
+            this.추가01_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.추가01_btn.Name = "추가01_btn";
+            this.추가01_btn.Size = new System.Drawing.Size(171, 41);
+            this.추가01_btn.TabIndex = 9;
+            this.추가01_btn.Text = "          검색";
+            this.추가01_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.추가01_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.추가01_btn.UseVisualStyleBackColor = true;
+            this.추가01_btn.Click += new System.EventHandler(this.추가_btn_Click);
+            this.추가01_btn.MouseEnter += new System.EventHandler(this.추가01_btn_MouseEnter);
+            this.추가01_btn.MouseLeave += new System.EventHandler(this.추가01_btn_MouseLeave);
             // 
             // 관심주식_datagridview
             // 
@@ -659,21 +664,21 @@ namespace Api_test01
             this.관심주식_datagridview.AllowUserToDeleteRows = false;
             this.관심주식_datagridview.AllowUserToResizeColumns = false;
             this.관심주식_datagridview.AllowUserToResizeRows = false;
-            this.관심주식_datagridview.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.관심주식_datagridview.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.관심주식_datagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.관심주식_datagridview.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.관심주식_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.관심주식_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.관심종목_코드,
             this.관심종목_이름});
-            this.관심주식_datagridview.Location = new System.Drawing.Point(33, 508);
-            this.관심주식_datagridview.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.관심주식_datagridview.Location = new System.Drawing.Point(26, 406);
+            this.관심주식_datagridview.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.관심주식_datagridview.Name = "관심주식_datagridview";
             this.관심주식_datagridview.RowHeadersVisible = false;
             this.관심주식_datagridview.RowHeadersWidth = 51;
             this.관심주식_datagridview.RowTemplate.Height = 23;
             this.관심주식_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.관심주식_datagridview.Size = new System.Drawing.Size(254, 241);
+            this.관심주식_datagridview.Size = new System.Drawing.Size(203, 193);
             this.관심주식_datagridview.TabIndex = 8;
             // 
             // 관심종목_코드
@@ -690,59 +695,99 @@ namespace Api_test01
             this.관심종목_이름.Name = "관심종목_이름";
             this.관심종목_이름.ReadOnly = true;
             // 
+            // btnIESearch
+            // 
+            this.btnIESearch.FlatAppearance.BorderSize = 0;
+            this.btnIESearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIESearch.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnIESearch.Image = global::Api_test01.Properties.Resources.newspaper_24;
+            this.btnIESearch.Location = new System.Drawing.Point(44, 163);
+            this.btnIESearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnIESearch.Name = "btnIESearch";
+            this.btnIESearch.Size = new System.Drawing.Size(171, 41);
+            this.btnIESearch.TabIndex = 20;
+            this.btnIESearch.Text = "          뉴스";
+            this.btnIESearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIESearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIESearch.UseVisualStyleBackColor = true;
+            this.btnIESearch.Click += new System.EventHandler(this.btnIESearch_Click);
+            this.btnIESearch.MouseEnter += new System.EventHandler(this.btnIESearch_MouseEnter);
+            this.btnIESearch.MouseLeave += new System.EventHandler(this.btnIESearch_MouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(66)))), ((int)(((byte)(194)))));
+            this.pictureBox1.Image = global::Api_test01.Properties.Resources.pngaaa_com_5178135;
+            this.pictureBox1.Location = new System.Drawing.Point(19, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 53);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnChart
+            // 
+            this.btnChart.FlatAppearance.BorderSize = 0;
+            this.btnChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChart.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnChart.Image = global::Api_test01.Properties.Resources.pie_chart_24;
+            this.btnChart.Location = new System.Drawing.Point(44, 107);
+            this.btnChart.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnChart.Name = "btnChart";
+            this.btnChart.Size = new System.Drawing.Size(171, 41);
+            this.btnChart.TabIndex = 17;
+            this.btnChart.Text = "          차트";
+            this.btnChart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnChart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChart.UseVisualStyleBackColor = true;
+            this.btnChart.Click += new System.EventHandler(this.btnChart_Click);
+            this.btnChart.Leave += new System.EventHandler(this.btnChart_Leave);
+            this.btnChart.MouseEnter += new System.EventHandler(this.btnChart_MouseEnter);
+            this.btnChart.MouseLeave += new System.EventHandler(this.btnChart_MouseLeave);
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Api_test01.Properties.Resources.user;
-            this.pictureBox3.Location = new System.Drawing.Point(934, 15);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(747, 12);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(49, 54);
+            this.pictureBox3.Size = new System.Drawing.Size(39, 43);
             this.pictureBox3.TabIndex = 15;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Api_test01.Properties.Resources._1564506_close_exit_logout_power_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(1199, 15);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(959, 12);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(49, 54);
+            this.pictureBox2.Size = new System.Drawing.Size(39, 43);
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(66)))), ((int)(((byte)(194)))));
-            this.pictureBox1.Image = global::Api_test01.Properties.Resources.pngaaa_com_5178135;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 66);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            // 
             // Parent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1262, 830);
+            this.ClientSize = new System.Drawing.Size(1010, 664);
             this.Controls.Add(this.MultiPanel);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.계좌_label);
             this.Controls.Add(this.사용자이름_label);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.매수매도_table);
             this.Controls.Add(this.계좌정보조회_btn);
             this.Controls.Add(this.로그인_btn);
             this.Controls.Add(this.계좌정보_table);
             this.Controls.Add(this.axKHOpenAPI1);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "Parent";
             this.Text = "Parent";
             this.Load += new System.EventHandler(this.Parent_Load);
@@ -757,9 +802,9 @@ namespace Api_test01
             ((System.ComponentModel.ISupportInitialize)(this.가격_numeric)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.관심주식_datagridview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

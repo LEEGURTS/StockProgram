@@ -73,6 +73,26 @@ namespace Api_test01.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap newspaper_24 {
+            get {
+                object obj = ResourceManager.GetObject("newspaper_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap pie_chart_24 {
+            get {
+                object obj = ResourceManager.GetObject("pie_chart_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap pinpng_com_logout_png_5199470 {
             get {
                 object obj = ResourceManager.GetObject("pinpng_com_logout_png_5199470", resourceCulture);
@@ -86,6 +106,16 @@ namespace Api_test01.Properties {
         internal static System.Drawing.Bitmap pngaaa_com_5178135 {
             get {
                 object obj = ResourceManager.GetObject("pngaaa_com_5178135", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_12_24 {
+            get {
+                object obj = ResourceManager.GetObject("search_12_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

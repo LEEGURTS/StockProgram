@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Api_test01
         string 종목코드리스트;
         public string[] 종목코드;
         public string[] 종목이름;
+        Form children;
         int grid_count = 0;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -46,11 +48,21 @@ namespace Api_test01
             btnMakeBig.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnMakeBig.Width, btnMakeBig.Height, 30, 30));
             btnMakeSmall.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnMakeSmall.Width, btnMakeSmall.Height, 30, 30));
             삭제_btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 삭제_btn.Width, 삭제_btn.Height, 30, 30));
+            로그인_btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 로그인_btn.Width, 로그인_btn.Height, 10, 10));
+            계좌정보조회_btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 계좌정보조회_btn.Width, 계좌정보조회_btn.Height, 10, 10));
             추가01_btn.Enabled = false;
             추가01_btn.Visible = false;
-
+            pictureBox3.Visible = false;
             
-
+            PrivateFontCollection customFont = new PrivateFontCollection();
+            customFont.AddFontFile("KoPub Dotum Bold.ttf");
+            customFont.AddFontFile("KoPub Dotum Light.ttf");
+            customFont.AddFontFile("KoPub Dotum Medium.ttf");
+            this.Font = new Font(customFont.Families[2], 9);
+            MultiPanel.Font = new Font(customFont.Families[2], 9);
+            label7.Font = new Font(customFont.Families[2], 14);
+            계좌_label.Font = new Font(customFont.Families[2], 9);
+            사용자이름_label.Font = new Font(customFont.Families[2], 9);
             axKHOpenAPI1.Visible = false;
         }
         private Point MouseDownLocation;
@@ -113,7 +125,8 @@ namespace Api_test01
                 삭제_btn.Visible = true;
                 매수_btn.Enabled = true;
                 매도_btn.Enabled = true;
-
+                pictureBox3.Visible = true;
+                계좌정보조회_btn.Visible = true;
                 종목코드리스트 = axKHOpenAPI1.GetCodeListByMarket("0");
                 종목코드 = 종목코드리스트.Split(';');
                 종목이름 = new string[종목코드.Length];
@@ -201,19 +214,12 @@ namespace Api_test01
         private void btnChart_Click(object sender, EventArgs e)
         {
             candleChart newChild = new candleChart();
+            children = newChild;
             newChild.stock = new List<List<string>>(); //이곳에 생성된 stock값을 전달
             newChild.SetStockList();
             childToMulti(newChild);
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {           
-            //Form newForm = new Form();
-            //새로운 폼에 대한 설정
-            //childToMulti(newForm);
-            
-            //이와 같이 설정하면 됨
-        }
 
         private void btnIESearch_Click(object sender, EventArgs e)
         {
@@ -262,7 +268,7 @@ namespace Api_test01
             Point p = new Point(29, 406);
             관심주식_datagridview.Dock = DockStyle.None;
             관심주식_datagridview.Height = 193;
-            관심주식_datagridview.Width = 222;
+            관심주식_datagridview.Width = Convert.ToInt32(panel1.Width / 1.25);
             관심주식_datagridview.Location = p;
             관심주식_datagridview.BringToFront();
             관심주식_datagridview.Show();
@@ -276,6 +282,11 @@ namespace Api_test01
             MultiPanel.Tag = 관심주식_datagridview;
             관심주식_datagridview.Size = MultiPanel.Size;
             관심주식_datagridview.Font = MultiPanel.Font;
+        }
+
+        private void btnChart_Leave(object sender, EventArgs e)
+        {
+            MultiPanel.Controls.Remove(children);
         }
     }
 }
