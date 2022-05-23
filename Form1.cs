@@ -15,11 +15,13 @@ namespace Api_test01
 {
     public partial class Parent : Form
     {
-        string 종목코드리스트;
-        public string[] 종목코드;
-        public string[] 종목이름;
-        Form children;
+        public string[] all_Code; // 모든 주식코드
+        public string[] all_Name; // 모든 주식명
+        string target_code, target_name;// 주문에 사용
         int grid_count = 0;
+        //List<unbuy> unbuyList;
+        //List<balance> balanceList; 형석님 코드에 있음 
+        Form children;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -34,6 +36,8 @@ namespace Api_test01
             InitializeComponent();
             // 계좌 조회 클릭 -> 계좌 잔고를 table의 label에 Load함
             axKHOpenAPI1.OnReceiveTrData += onReceiveTrData;
+            axKHOpenAPI1.OnReceiveRealData += onReceiveRealData;
+            관심주식_datagridview.SelectionChanged += SendInfo;
 
         }
         private void Parent_Load(object sender, EventArgs e)
@@ -52,8 +56,9 @@ namespace Api_test01
             계좌정보조회_btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 계좌정보조회_btn.Width, 계좌정보조회_btn.Height, 10, 10));
             추가01_btn.Enabled = false;
             추가01_btn.Visible = false;
+
+            /*
             pictureBox3.Visible = false;
-            
             PrivateFontCollection customFont = new PrivateFontCollection();
             customFont.AddFontFile("KoPub Dotum Bold.ttf");
             customFont.AddFontFile("KoPub Dotum Light.ttf");
@@ -63,26 +68,49 @@ namespace Api_test01
             label7.Font = new Font(customFont.Families[2], 14);
             계좌_label.Font = new Font(customFont.Families[2], 9);
             사용자이름_label.Font = new Font(customFont.Families[2], 9);
+            */
             axKHOpenAPI1.Visible = false;
         }
+        
         private Point MouseDownLocation;
-        private void Panel_Drag_MouseDown(object sender, MouseEventArgs e) //마우스 위치 전달
+
+        ///////////////////////////////////////////
+        //////////////API기능/////////////////////
+        /////////////////////////////////////////
+        public void SendInfo(object sender, EventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (sender.Equals(관심주식_datagridview))
             {
-                MouseDownLocation = e.Location;
+                try
+                {
+                    if (관심주식_datagridview.SelectedCells.Count > 0)
+                    {
+                        int selectRowindex = 관심주식_datagridview.SelectedCells[0].RowIndex;
+                        if (selectRowindex == 0 && 관심주식_datagridview.Rows.Count == 1 && 관심주식_datagridview["관심주식_이름", selectRowindex].Value == null)
+                        {   // 처음에 빈 셀이 선택되서 오류나는 것을 방지함
+                            관심주식_datagridview.ClearSelection();
+                            return;
+                        }
+                        target_name = 관심주식_datagridview["관심주식_이름", selectRowindex].Value.ToString();
+                        target_code = 관심주식_datagridview["관심주식_코드", selectRowindex].Value.ToString();
+
+                        axKHOpenAPI1.SetInputValue("종목코드", target_code); // 종목코드 보냄
+                        axKHOpenAPI1.CommRqData("종목정보요청", "opt10001", 0, "5000"); // 정보 주세요!
+                        // onReceive어쩌구 시작
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    // 오류나도 속행한다.
+                }
             }
         }
-        private void Panel_Drag_MouseMove(object sender, MouseEventArgs e) //드래그로 폼을 이동시키는 함수
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                Left = e.X + Left - MouseDownLocation.X;
-                Top = e.Y + Top - MouseDownLocation.Y;
-            }
-        }
+
         public void onReceiveTrData(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnReceiveTrDataEvent e)
         {
+            int count = axKHOpenAPI1.GetRepeatCnt(e.sTrCode, e.sRQName);
+
             if (e.sRQName == "계좌잔고평가내역")
             {
                 int buy = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "총매입금액"));
@@ -95,16 +123,43 @@ namespace Api_test01
                 총평가_label.Text = val.ToString();
                 전체손익_label.Text = profit.ToString();
             }
+            else if (e.sRQName == "종목정보요청")
+            {
+                long price = long.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "현재가").Trim().Substring(1));
+                long dif = long.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "전일대비").Trim());
 
+                종목이름01_label.Text = target_name;
+                전일대비_label.Text = String.Format("{0:#,###}", dif);
+                현재가01_label.Text = String.Format("{0:#,###}", price);
+                // 보유수량은 계좌잔고 평가 내역에서 code == 서버에서주는 code[i]이면
+                // 보유수량[i]를 반환, 같은게 없으면 0 반환
+            }
 
         }
 
-            private void 로그인_btn_Click(object sender, EventArgs e) 
+        public void onReceiveRealData(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnReceiveRealDataEvent e)
         {
-            axKHOpenAPI1.CommConnect();
-            axKHOpenAPI1.OnEventConnect += OnEventConnect;
+
         }
 
+        public void add_grid(string name, string code)
+        {
+            if (관심주식_datagridview.RowCount > 0)
+            {
+                for (int i = 0; i < 관심주식_datagridview.RowCount; i++)
+                {
+                    if (관심주식_datagridview["관심주식_이름", i].Value.ToString() == name)
+                    {
+                        return;
+                    }
+                }
+            }
+            관심주식_datagridview.Rows.Add(); // datagrid 행 추가
+            관심주식_datagridview["관심주식_이름", grid_count].Value = name;
+            관심주식_datagridview["관심주식_코드", grid_count].Value = code;
+            grid_count++;
+        }
+        
         public void OnEventConnect(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnEventConnectEvent e)
         {
             if (e.nErrCode == 0)
@@ -127,18 +182,56 @@ namespace Api_test01
                 매도_btn.Enabled = true;
                 pictureBox3.Visible = true;
                 계좌정보조회_btn.Visible = true;
-                종목코드리스트 = axKHOpenAPI1.GetCodeListByMarket("0");
-                종목코드 = 종목코드리스트.Split(';');
-                종목이름 = new string[종목코드.Length];
+                string code_list = axKHOpenAPI1.GetCodeListByMarket("0");
+                all_Code = code_list.Split(';');
+                all_Name = new string[all_Code.Length];
                 int i = 0;
-                foreach (string code in 종목코드)
+                foreach (string code in all_Code)
                 {
-                    종목이름[i] = axKHOpenAPI1.GetMasterCodeName(code);
+                    all_Name[i] = axKHOpenAPI1.GetMasterCodeName(code);
                     i++;
                 }
             }
         }
 
+        ///////////////////////////////////////////
+        //////////////Form관련////////////////////
+        /////////////////////////////////////////
+        private void Panel_Drag_MouseDown(object sender, MouseEventArgs e) //마우스 위치 전달
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                MouseDownLocation = e.Location;
+            }
+        }
+
+        private void Panel_Drag_MouseMove(object sender, MouseEventArgs e) //드래그로 폼을 이동시키는 함수
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Left = e.X + Left - MouseDownLocation.X;
+                Top = e.Y + Top - MouseDownLocation.Y;
+            }
+        }
+
+        private void childToMulti(Form newChild)
+        {
+
+            newChild.TopLevel = false;
+            newChild.Location = MultiPanel.Location;
+            newChild.Dock = DockStyle.Fill;
+            MultiPanel.Controls.Add(newChild);
+            MultiPanel.Tag = newChild;
+            newChild.Size = MultiPanel.Size;
+            newChild.Font = MultiPanel.Font;
+            newChild.BringToFront();
+            newChild.Show();
+        }
+
+
+        ///////////////////////////////////////////
+        //////////////기타함수들//////////////////
+        /////////////////////////////////////////
         private void 계좌정보조회_btn_Click(object sender, EventArgs e)
         {
             string account = 계좌_label.Text;
@@ -151,29 +244,16 @@ namespace Api_test01
 
         private void 추가_btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(종목코드.Length.ToString()+"개 업뎃함!");
             Child child = new Child(this);
             child.Owner = this;
             child.BackColor = this.BackColor;
             childToMulti(child);
         }
 
-        public void add_grid(string name, string code)
+        private void 로그인_btn_Click(object sender, EventArgs e)
         {
-            if (관심주식_datagridview.RowCount > 0)
-            {
-                for (int i = 0; i < 관심주식_datagridview.RowCount; i++)
-                {
-                    if (관심주식_datagridview["관심종목_이름", i].Value.ToString() == name)
-                    {
-                        return;
-                    }
-                }
-            }
-            관심주식_datagridview.Rows.Add(); // datagrid 행 추가
-            관심주식_datagridview["관심종목_이름", grid_count].Value = name;
-            관심주식_datagridview["관심종목_코드", grid_count].Value = code;
-            grid_count++;
+            axKHOpenAPI1.CommConnect();
+            axKHOpenAPI1.OnEventConnect += OnEventConnect;
         }
 
         private void 삭제_btn_Click(object sender, EventArgs e)
@@ -182,36 +262,37 @@ namespace Api_test01
             {
                 int selectRowindex = 관심주식_datagridview.SelectedCells[0].RowIndex;
                 관심주식_datagridview.Rows.Remove(관심주식_datagridview.Rows[selectRowindex]);
+                grid_count--;
             }
         }
 
         private void 매수_btn_Click(object sender, EventArgs e)
-        {
-
+        { /*
+            if (가격_numeric.Value > 0 && 수량_numeric.Value > 0 && 계좌_label.Text.Length > 0)
+            {
+                int result = axKHOpenAPI1.SendOrder("현금매수주문", "5001", 계좌_label.Text, 1, target_code, int.Parse(수량_numeric.Value.ToString()), int.Parse(가격_numeric.Value.ToString()), "지정가", "");
+                if (result == 0)
+                    MessageBox.Show("주문성공");
+            }
+            */
         }
 
         private void 매도_btn_Click(object sender, EventArgs e)
-        {
-
+        {/*
+            if (가격_numeric.Value > 0 && 수량_numeric.Value > 0 && 계좌_label.Text.Length > 0)
+            {
+                int result = axKHOpenAPI1.SendOrder("현금매도주문", "5001", 계좌_label.Text, 2, target_code, int.Parse(수량_numeric.Value.ToString()), int.Parse(가격_numeric.Value.ToString()), "지정가", "");
+                if (result == 0)
+                    MessageBox.Show("주문성공");
+            }
+            */
         }
-
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void childToMulti(Form newChild) {
-            
-            newChild.TopLevel = false;
-            newChild.Location = MultiPanel.Location;
-            newChild.Dock = DockStyle.Fill;
-            MultiPanel.Controls.Add(newChild);
-            MultiPanel.Tag = newChild;
-            newChild.Size = MultiPanel.Size;
-            newChild.Font = MultiPanel.Font;
-            newChild.BringToFront();
-            newChild.Show();
-        }
+        
         private void btnChart_Click(object sender, EventArgs e)
         {
             candleChart newChild = new candleChart();
@@ -220,7 +301,6 @@ namespace Api_test01
             newChild.SetStockList();
             childToMulti(newChild);
         }
-
 
         private void btnIESearch_Click(object sender, EventArgs e)
         {
@@ -289,5 +369,8 @@ namespace Api_test01
         {
             MultiPanel.Controls.Remove(children);
         }
+
+        
+
     }
 }
