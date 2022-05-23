@@ -67,13 +67,13 @@ namespace Api_test01
             this.삭제_btn = new System.Windows.Forms.Button();
             this.추가01_btn = new System.Windows.Forms.Button();
             this.관심주식_datagridview = new System.Windows.Forms.DataGridView();
-            this.관심종목_코드 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.관심종목_이름 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnIESearch = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnChart = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.관심주식_코드 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.관심주식_이름 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.axKHOpenAPI1)).BeginInit();
             this.계좌정보_table.SuspendLayout();
             this.매수매도_table.SuspendLayout();
@@ -669,8 +669,8 @@ namespace Api_test01
             this.관심주식_datagridview.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.관심주식_datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.관심주식_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.관심종목_코드,
-            this.관심종목_이름});
+            this.관심주식_코드,
+            this.관심주식_이름});
             this.관심주식_datagridview.Location = new System.Drawing.Point(26, 406);
             this.관심주식_datagridview.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.관심주식_datagridview.Name = "관심주식_datagridview";
@@ -680,20 +680,6 @@ namespace Api_test01
             this.관심주식_datagridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.관심주식_datagridview.Size = new System.Drawing.Size(203, 193);
             this.관심주식_datagridview.TabIndex = 8;
-            // 
-            // 관심종목_코드
-            // 
-            this.관심종목_코드.HeaderText = "종목코드";
-            this.관심종목_코드.MinimumWidth = 6;
-            this.관심종목_코드.Name = "관심종목_코드";
-            this.관심종목_코드.ReadOnly = true;
-            // 
-            // 관심종목_이름
-            // 
-            this.관심종목_이름.HeaderText = "종목이름";
-            this.관심종목_이름.MinimumWidth = 6;
-            this.관심종목_이름.Name = "관심종목_이름";
-            this.관심종목_이름.ReadOnly = true;
             // 
             // btnIESearch
             // 
@@ -766,6 +752,20 @@ namespace Api_test01
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // 관심주식_코드
+            // 
+            this.관심주식_코드.HeaderText = "종목코드";
+            this.관심주식_코드.MinimumWidth = 6;
+            this.관심주식_코드.Name = "관심주식_코드";
+            this.관심주식_코드.ReadOnly = true;
+            // 
+            // 관심주식_이름
+            // 
+            this.관심주식_이름.HeaderText = "종목이름";
+            this.관심주식_이름.MinimumWidth = 6;
+            this.관심주식_이름.Name = "관심주식_이름";
+            this.관심주식_이름.ReadOnly = true;
+            // 
             // Parent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -835,10 +835,7 @@ namespace Api_test01
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label 종목이름01_label;
         private System.Windows.Forms.Label 보유수량_label;
-        private System.Windows.Forms.Label 현재가01_label;
-        private System.Windows.Forms.Label 전일대비_label;
         private System.Windows.Forms.NumericUpDown 수량_numeric;
         private System.Windows.Forms.NumericUpDown 가격_numeric;
         private System.Windows.Forms.Label 사용자이름_label;
@@ -852,10 +849,13 @@ namespace Api_test01
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button 삭제_btn;
         private System.Windows.Forms.DataGridView 관심주식_datagridview;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 관심종목_코드;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 관심종목_이름;
         private System.Windows.Forms.Button btnMakeBig;
         private System.Windows.Forms.Button btnMakeSmall;
+        public System.Windows.Forms.Label 종목이름01_label;
+        public System.Windows.Forms.Label 현재가01_label;
+        public System.Windows.Forms.Label 전일대비_label;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 관심주식_코드;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 관심주식_이름;
     }
 }
 
