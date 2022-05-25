@@ -78,5 +78,13 @@ namespace Api_test01
                 parent.add_grid(name, code);
             }
         }
+
+        private void 검색_txtBox_KeyDown(object sender, KeyEventArgs e) //엔터키 입력시 검색
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                검색_btn_Click(sender, e);
+            }
+        }
     }
 }

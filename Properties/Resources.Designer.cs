@@ -71,6 +71,36 @@ namespace Api_test01.Properties {
         }
         
         /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static byte[] KoPub_Dotum_Bold {
+            get {
+                object obj = ResourceManager.GetObject("KoPub_Dotum_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static byte[] KoPub_Dotum_Light {
+            get {
+                object obj = ResourceManager.GetObject("KoPub_Dotum_Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static byte[] KoPub_Dotum_Medium {
+            get {
+                object obj = ResourceManager.GetObject("KoPub_Dotum_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
         internal static System.Drawing.Bitmap newspaper_24 {

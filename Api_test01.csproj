@@ -67,6 +67,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StockInfoShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockInfoShow.Designer.cs">
+      <DependentUpon>StockInfoShow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="candleChart.resx">
       <DependentUpon>candleChart.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +92,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StockInfoShow.resx">
+      <DependentUpon>StockInfoShow.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="KoPub Dotum Bold.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

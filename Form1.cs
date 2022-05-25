@@ -40,8 +40,8 @@ namespace Api_test01
             axKHOpenAPI1.OnReceiveTrData += onReceiveTrData;
             axKHOpenAPI1.OnReceiveRealData += onReceiveRealData;
             관심주식_datagridview.SelectionChanged += SendInfo;
-
         }
+
         private void Parent_Load(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -58,22 +58,13 @@ namespace Api_test01
             계좌정보조회_btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 계좌정보조회_btn.Width, 계좌정보조회_btn.Height, 10, 10));
             추가01_btn.Enabled = false;
             추가01_btn.Visible = false;
-
-            /*
-            pictureBox3.Visible = false;
-            PrivateFontCollection customFont = new PrivateFontCollection();
-            customFont.AddFontFile("KoPub Dotum Bold.ttf");
-            customFont.AddFontFile("KoPub Dotum Light.ttf");
-            customFont.AddFontFile("KoPub Dotum Medium.ttf");
-            this.Font = new Font(customFont.Families[2], 9);
-            MultiPanel.Font = new Font(customFont.Families[2], 9);
-            label7.Font = new Font(customFont.Families[2], 14);
-            계좌_label.Font = new Font(customFont.Families[2], 9);
-            사용자이름_label.Font = new Font(customFont.Families[2], 9);
-            */
+            pictureBox3.Visible = false;          
             axKHOpenAPI1.Visible = false;
         }
-        
+
+  
+
+
         private Point MouseDownLocation;
 
         ///////////////////////////////////////////
@@ -249,7 +240,6 @@ namespace Api_test01
 
         private void childToMulti(Form newChild)
         {
-
             newChild.TopLevel = false;
             newChild.Location = MultiPanel.Location;
             newChild.Dock = DockStyle.Fill;
@@ -278,7 +268,6 @@ namespace Api_test01
         private void 추가_btn_Click(object sender, EventArgs e)
         {
             Child child = new Child(this);
-            child.Owner = this;
             child.BackColor = this.BackColor;
             childToMulti(child);
         }

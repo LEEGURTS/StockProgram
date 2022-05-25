@@ -91,6 +91,7 @@ namespace Api_test01
             this.검색_txtBox.Name = "검색_txtBox";
             this.검색_txtBox.Size = new System.Drawing.Size(351, 21);
             this.검색_txtBox.TabIndex = 5;
+            this.검색_txtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.검색_txtBox_KeyDown);
             // 
             // groupBox2
             // 
