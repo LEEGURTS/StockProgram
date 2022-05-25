@@ -18,10 +18,13 @@ namespace Api_test01
         }
         public List<List<string>> stock = new List<List<string>>(); // 스톡의 정보, 순서는 시가,고가,저가,종가
         Series chartSeries;
+        Series SMA;
+        //list값을 준다면 /20 /60 /120 선 그어주기.
         private void candleChart_Load(object sender, EventArgs e)
         {
             
             chartSeries = chart1.Series["Series1"];
+            SMA = chart1.Series["SMA"];
             chartSeries.CustomProperties = "PriceDownColor=Blue,PriceUpColor=Red";
             chartSeries.Palette = new ChartColorPalette();
             chart1.AxisViewChanged += ViewChanged;
@@ -35,9 +38,29 @@ namespace Api_test01
                 this.chartSeries.Points.AddXY(idx, int.Parse(now[1]));
                 chartSeries.Points[idx].YValues[1] = int.Parse(now[2]);
                 chartSeries.Points[idx].YValues[2] = int.Parse(now[0]);
-                chartSeries.Points[idx].YValues[3] = int.Parse(now[3]);
+                chartSeries.Points[idx].YValues[3] = int.Parse(now[3]); //종가 
                 idx++;
             }
+        }
+
+        public void SetPoint(int val) //이평선 함수 구현 문제 지적 부탁.
+        {
+            int k = 0;
+            int sum = 0;
+            if(stock.Count < val) //val만큼 값은있니?
+            {
+                return;
+            }
+            while (stock.Count - val - 1 - k != -1) {
+                for (int i = stock.Count - 1 - k; i > stock.Count - val - 1 - k; i--)
+                {
+                    sum += int.Parse(stock[i][3]);
+                }
+                SMA.Points[stock.Count - 1 - k].YValues[0] = sum / val;
+                k++;
+            }
+
+            
         }
         private void ViewChanged(object sender, ViewEventArgs e)
         {
