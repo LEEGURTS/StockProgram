@@ -67,13 +67,13 @@ namespace Api_test01
             this.삭제_btn = new System.Windows.Forms.Button();
             this.추가01_btn = new System.Windows.Forms.Button();
             this.관심주식_datagridview = new System.Windows.Forms.DataGridView();
+            this.관심주식_코드 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.관심주식_이름 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnIESearch = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnChart = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.관심주식_코드 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.관심주식_이름 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.axKHOpenAPI1)).BeginInit();
             this.계좌정보_table.SuspendLayout();
             this.매수매도_table.SuspendLayout();
@@ -681,6 +681,20 @@ namespace Api_test01
             this.관심주식_datagridview.Size = new System.Drawing.Size(203, 193);
             this.관심주식_datagridview.TabIndex = 8;
             // 
+            // 관심주식_코드
+            // 
+            this.관심주식_코드.HeaderText = "종목코드";
+            this.관심주식_코드.MinimumWidth = 6;
+            this.관심주식_코드.Name = "관심주식_코드";
+            this.관심주식_코드.ReadOnly = true;
+            // 
+            // 관심주식_이름
+            // 
+            this.관심주식_이름.HeaderText = "종목이름";
+            this.관심주식_이름.MinimumWidth = 6;
+            this.관심주식_이름.Name = "관심주식_이름";
+            this.관심주식_이름.ReadOnly = true;
+            // 
             // btnIESearch
             // 
             this.btnIESearch.FlatAppearance.BorderSize = 0;
@@ -751,20 +765,6 @@ namespace Api_test01
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // 관심주식_코드
-            // 
-            this.관심주식_코드.HeaderText = "종목코드";
-            this.관심주식_코드.MinimumWidth = 6;
-            this.관심주식_코드.Name = "관심주식_코드";
-            this.관심주식_코드.ReadOnly = true;
-            // 
-            // 관심주식_이름
-            // 
-            this.관심주식_이름.HeaderText = "종목이름";
-            this.관심주식_이름.MinimumWidth = 6;
-            this.관심주식_이름.Name = "관심주식_이름";
-            this.관심주식_이름.ReadOnly = true;
             // 
             // Parent
             // 

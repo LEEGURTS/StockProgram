@@ -19,9 +19,11 @@ namespace Api_test01
         public string[] all_Name; // 모든 주식명
         string target_code, target_name;// 주문에 사용
         int grid_count = 0;
+        public List<List<string>> stock = new List<List<string>>();
         //List<unbuy> unbuyList;
         //List<balance> balanceList; 형석님 코드에 있음 
         Form children;
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -97,6 +99,8 @@ namespace Api_test01
                         axKHOpenAPI1.SetInputValue("종목코드", target_code); // 종목코드 보냄
                         axKHOpenAPI1.CommRqData("종목정보요청", "opt10001", 0, "5000"); // 정보 주세요!
                         // onReceive어쩌구 시작
+                        axKHOpenAPI1.SetInputValue("종목코드", target_code);
+                        axKHOpenAPI1.CommRqData("시고종저", "opt10005", 0, "5000");
                     }
 
                 }
@@ -123,6 +127,7 @@ namespace Api_test01
                 총평가_label.Text = val.ToString();
                 전체손익_label.Text = profit.ToString();
             }
+
             else if (e.sRQName == "종목정보요청")
             {
                 long price = long.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "현재가").Trim().Substring(1));
@@ -135,6 +140,34 @@ namespace Api_test01
                 // 보유수량[i]를 반환, 같은게 없으면 0 반환
             }
 
+            else if (e.sRQName == "시고종저")
+            {
+                //MessageBox.Show(e.sRQName);
+                stock.Clear();
+                int Count = axKHOpenAPI1.GetRepeatCnt(e.sTrCode, e.sRQName);
+                //MessageBox.Show(Count.ToString());
+                string YMD, price_si, price_go, price_jong, price_jer;
+                for (int i = 0; i < Count; i++)
+                {
+                    YMD = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "날짜").Trim();
+                    price_si = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "시가").Trim();
+                    price_go = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "고가").Trim();
+                    price_jong = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "종가").Trim();
+                    price_jong = price_jong.Replace("+", "");
+                    price_jong = price_jong.Replace("-", "");
+
+                    price_jer = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "저가").Trim();
+                    stock.Add(new List<string>());
+                    stock[i].Add(price_si);
+                    stock[i].Add(price_go);
+                    stock[i].Add(price_jer);
+                    stock[i].Add(price_jong);
+                    stock[i].Add(YMD);
+
+                    // 보유수량은 계좌잔고 평가 내역에서 code == 서버에서주는 code[i]이면
+                    // 보유수량[i]를 반환, 같은게 없으면 0 반환
+                }
+            }
         }
 
         public void onReceiveRealData(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnReceiveRealDataEvent e)
@@ -296,9 +329,10 @@ namespace Api_test01
         private void btnChart_Click(object sender, EventArgs e)
         {
             candleChart newChild = new candleChart();
+            newChild.stock.Clear();
+            newChild.stock = this.stock;
             children = newChild;
-            newChild.stock = new List<List<string>>(); //이곳에 생성된 stock값을 전달
-            newChild.SetStockList();
+            //newChild.SetStockList();
             childToMulti(newChild);
         }
 
