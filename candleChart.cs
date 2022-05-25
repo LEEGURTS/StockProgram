@@ -28,6 +28,7 @@ namespace Api_test01
             chartSeries.CustomProperties = "PriceDownColor=Blue,PriceUpColor=Red";
             chartSeries.Palette = new ChartColorPalette();
             chart1.AxisViewChanged += ViewChanged;
+            SetStockList();
         }
 
         public void SetStockList()
@@ -35,7 +36,7 @@ namespace Api_test01
             int idx = 0;
             foreach (List<string> now in stock)
             {
-                this.chartSeries.Points.AddXY(idx, int.Parse(now[1]));
+                this.chartSeries.Points.AddXY(int.Parse(now[4]), int.Parse(now[1]));
                 chartSeries.Points[idx].YValues[1] = int.Parse(now[2]);
                 chartSeries.Points[idx].YValues[2] = int.Parse(now[0]);
                 chartSeries.Points[idx].YValues[3] = int.Parse(now[3]); //종가 
