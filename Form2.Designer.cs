@@ -34,7 +34,7 @@ namespace Api_test01
             this.검색_btn = new System.Windows.Forms.Button();
             this.검색_txtBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.현재가02_label = new System.Windows.Forms.Label();
+            this.종목이름02_label = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.종목검색_datagridview = new System.Windows.Forms.DataGridView();
             this.종목검색_이름 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,7 +98,7 @@ namespace Api_test01
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.현재가02_label);
+            this.groupBox2.Controls.Add(this.종목이름02_label);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.종목검색_datagridview);
             this.groupBox2.Controls.Add(this.추가02_btn);
@@ -109,16 +109,15 @@ namespace Api_test01
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "종목 리스트";
             // 
-            // 현재가02_label
+            // 종목이름02_label
             // 
-            this.현재가02_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.현재가02_label.AutoSize = true;
-            this.현재가02_label.Location = new System.Drawing.Point(107, 432);
-            this.현재가02_label.Name = "현재가02_label";
-            this.현재가02_label.Size = new System.Drawing.Size(11, 12);
-            this.현재가02_label.TabIndex = 6;
-            this.현재가02_label.Text = "0";
-            this.현재가02_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.종목이름02_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.종목이름02_label.AutoSize = true;
+            this.종목이름02_label.Location = new System.Drawing.Point(107, 432);
+            this.종목이름02_label.Name = "종목이름02_label";
+            this.종목이름02_label.Size = new System.Drawing.Size(0, 12);
+            this.종목이름02_label.TabIndex = 6;
+            this.종목이름02_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -126,9 +125,9 @@ namespace Api_test01
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(8, 432);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 5;
-            this.label5.Text = "현재가";
+            this.label5.Text = "선택 종목 :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // 종목검색_datagridview
@@ -210,7 +209,7 @@ namespace Api_test01
         private System.Windows.Forms.Button 추가02_btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 종목검색_이름;
         private System.Windows.Forms.DataGridViewTextBoxColumn 종목검색_코드;
-        private System.Windows.Forms.Label 현재가02_label;
+        private System.Windows.Forms.Label 종목이름02_label;
         private System.Windows.Forms.Label label5;
     }
 }

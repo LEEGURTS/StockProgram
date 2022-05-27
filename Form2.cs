@@ -40,6 +40,8 @@ namespace Api_test01
                         name = 종목검색_datagridview["종목검색_이름", selectRowindex].Value.ToString();
                         code = 종목검색_datagridview["종목검색_코드", selectRowindex].Value.ToString();
                         추가02_btn.Enabled = true;
+
+                        종목이름02_label.Text = name;
                     }
                 }
                 catch (Exception ex)

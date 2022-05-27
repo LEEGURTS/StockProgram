@@ -62,6 +62,8 @@ namespace Api_test01
             추가01_btn.Visible = false;
             pictureBox3.Visible = false;          
             axKHOpenAPI1.Visible = false;
+            btnBalance.Visible = false;
+            btnBalance.Enabled = false;
         }
 
   
@@ -167,6 +169,7 @@ namespace Api_test01
                 long dif = long.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "전일대비").Trim());
 
                 종목이름01_label.Text = target_name;
+                종목코드_label.Text = target_code;
                 전일대비_label.Text = String.Format("{0:#,###}", dif);
                 현재가01_label.Text = String.Format("{0:#,###}", price);
                 // 보유수량은 계좌잔고 평가 내역에서 code == 서버에서주는 code[i]이면
@@ -380,6 +383,9 @@ namespace Api_test01
             axKHOpenAPI1.SetInputValue("비밀번호입력매체구분", "00");
             axKHOpenAPI1.SetInputValue("조회구분", "2");
             axKHOpenAPI1.CommRqData("계좌잔고평가내역", "opw00018", 0, "5000");
+
+            btnBalance.Visible = true;
+            btnBalance.Enabled = true;
         }
 
         private void 추가_btn_Click(object sender, EventArgs e)
