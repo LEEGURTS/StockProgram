@@ -20,8 +20,10 @@ namespace Api_test01
         string target_code, target_name;// 주문에 사용
         int grid_count = 0;
         public List<List<string>> stock = new List<List<string>>();
-        //List<unbuy> unbuyList;
-        //List<balance> balanceList; 형석님 코드에 있음 
+        public static priceChart pricechart;
+        List<unbuy> unbuyList;
+        List<balance> balanceList;
+        checkBalance checkbal;
         Form children;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -90,6 +92,8 @@ namespace Api_test01
                         axKHOpenAPI1.SetInputValue("종목코드", target_code); // 종목코드 보냄
                         axKHOpenAPI1.CommRqData("종목정보요청", "opt10001", 0, "5000"); // 정보 주세요!
                         // onReceive어쩌구 시작
+              
+
                         axKHOpenAPI1.SetInputValue("종목코드", target_code);
                         axKHOpenAPI1.CommRqData("시고종저", "opt10005", 0, "5000");
                     }
@@ -102,12 +106,10 @@ namespace Api_test01
             }
         }
 
-        public void onReceiveTrData(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnReceiveTrDataEvent e)
-        {
-            int count = axKHOpenAPI1.GetRepeatCnt(e.sTrCode, e.sRQName);
-
-            if (e.sRQName == "계좌잔고평가내역")
-            {
+        public void onReceiveTrData(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnReceiveTrDataEvent e) {
+            balanceList = new List<balance>();
+            
+            if (e.sRQName == "계좌잔고평가내역") {
                 int buy = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "총매입금액"));
                 int deposit = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "추정예탁자산"));
                 int val = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "총평가금액"));
@@ -117,10 +119,50 @@ namespace Api_test01
                 총매입_label.Text = buy.ToString();
                 총평가_label.Text = val.ToString();
                 전체손익_label.Text = profit.ToString();
-            }
 
-            else if (e.sRQName == "종목정보요청")
-            {
+                
+                
+                int count = axKHOpenAPI1.GetRepeatCnt(e.sTrCode, e.sRQName);
+                
+                for (int i = 0; i < count; i++) {
+
+                    string code = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "종목번호").TrimStart('0');
+                    string name = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "종목명").Trim();
+                    double num = double.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "보유수량"));
+                    double buys = double.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "매입가"));
+                    double price = double.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "현재가"));
+                    double profits = double.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "평가손익"));
+                    double percentage = double.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "수익률(%)"));
+
+                    balance stockBalance = new balance(code, name, num, buys, price, profits, percentage);
+
+                    balanceList.Add(stockBalance);
+                }
+                checkbal = new checkBalance(balanceList);
+
+            }
+           /* else if (e.sRQName.Equals("실시간미체결요청")) {
+                int count = axKHOpenAPI1.GetRepeatCnt(e.sTrCode, e.sRQName);
+                //dgvUn.Rows.Clear();
+                for (int i = 0; i < count; i++) {
+                    try {
+                        string orderNumber = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "주문번호").Trim();
+                        string code = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "종목코드").Trim();
+                        string name = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "종목명").Trim();
+                        int orderNum = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "주문수량"));
+                        int orderPrice = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "주문가격"));
+                        int unorderNum = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "미체결수량"));
+                        string sep = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "주문구분").Trim();
+                        string time = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "시간").Trim();
+                        int price = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "현재가"));
+                        unbuyList.Add(new unbuy(orderNumber, code, name, orderNum, orderPrice, unorderNum, sep, time, price));
+                    }
+                    catch (Exception exception) {
+                        Console.WriteLine(exception.Message.ToString());
+                    }
+                }
+            }*/
+            else if (e.sRQName == "종목정보요청") {
                 long price = long.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "현재가").Trim().Substring(1));
                 long dif = long.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "전일대비").Trim());
 
@@ -129,17 +171,17 @@ namespace Api_test01
                 현재가01_label.Text = String.Format("{0:#,###}", price);
                 // 보유수량은 계좌잔고 평가 내역에서 code == 서버에서주는 code[i]이면
                 // 보유수량[i]를 반환, 같은게 없으면 0 반환
+                axKHOpenAPI1.SetInputValue("종목코드", target_code); // 종목코드 보냄
+                axKHOpenAPI1.CommRqData("주식호가", "opt10004", 0, "5002");
             }
 
-            else if (e.sRQName == "시고종저")
-            {
+            else if (e.sRQName == "시고종저") {
                 //MessageBox.Show(e.sRQName);
                 stock.Clear();
                 int Count = axKHOpenAPI1.GetRepeatCnt(e.sTrCode, e.sRQName);
                 //MessageBox.Show(Count.ToString());
                 string YMD, price_si, price_go, price_jong, price_jer;
-                for (int i = 0; i < Count; i++)
-                {
+                for (int i = 0; i < Count; i++) {
                     YMD = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "날짜").Trim();
                     price_si = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "시가").Trim();
                     price_go = axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, i, "고가").Trim();
@@ -159,12 +201,87 @@ namespace Api_test01
                     // 보유수량[i]를 반환, 같은게 없으면 0 반환
                 }
             }
+            else if (e.sRQName == "주식호가") {
+                int[] 차선호가 = new int[9];
+                int[] 차선잔량 = new int[9];
+                for (int i = 0; i < 9; i++) {
+                    차선호가[i] = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매도" + (10 - i) + "차선호가"));
+
+
+                    if (i == 4) {
+                        차선잔량[i] = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매도" + (10 - i) + "우선잔량"));
+
+
+                    }
+                    else {
+                        차선잔량[i] = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매도" + (10 - i) + "차선잔량"));
+
+                    }
+                }
+
+                int 매도최우선호가 = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매도최우선호가"));
+
+                int 매도최우선잔량 = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매도최우선잔량"));
+
+
+                int 매수최우선호가 = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매수최우선호가"));
+
+                int 매수최우선잔량 = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매수최우선잔량"));
+                int[] 호가 = new int[9];
+                int[] 잔량 = new int[9];
+
+                for (int i = 0; i < 9; i++) {
+                    if (i == 4) {
+                        호가[i] = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매수" + (2 + i) + "우선호가"));
+
+
+                        잔량[i] = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매수" + (2 + i) + "우선잔량"));
+
+                    }
+                    else {
+                        호가[i] = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매수" + (2 + i) + "차선호가"));
+
+
+                        잔량[i] = int.Parse(axKHOpenAPI1.GetCommData(e.sTrCode, e.sRQName, 0, "매수" + (2 + i) + "차선잔량"));
+
+                    }
+                }
+                pricechart = new priceChart(target_name, 차선호가, 차선잔량, 매도최우선호가, 매도최우선잔량, 매수최우선호가, 매수최우선잔량, 호가, 잔량);
+                childToMulti(pricechart);
+
+
+
+            }
+
+
         }
 
-        public void onReceiveRealData(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnReceiveRealDataEvent e)
-        {
+        public void onReceiveRealData(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnReceiveRealDataEvent e) {
+            if (e.sRealType == "주식호가잔량") {
+                if (e.sRealKey.Equals(target_code)) {
+                    try {
+                        for (int i = 0; i < 10; i++) {
+                            int 매도호가 = int.Parse(axKHOpenAPI1.GetCommRealData(e.sRealType, 50 - i));
+                            int 매도잔량 = int.Parse(axKHOpenAPI1.GetCommRealData(e.sRealType, 70 - i));
 
+                            pricechart.lstPrice.Items[i] = 매도호가;
+                            pricechart.lstVolume.Items[i] = 매도잔량;
+
+                            int 매수호가 = int.Parse(axKHOpenAPI1.GetCommRealData(e.sRealType, 51 + i));
+                            int 매수잔량 = int.Parse(axKHOpenAPI1.GetCommRealData(e.sRealType, 71 + i));
+
+                            pricechart.lstPrice.Items[10 + i] = 매수호가;
+                            pricechart.lstVolume.Items[10 + i] = 매수잔량;
+
+                        }
+                    }
+                    catch (Exception exception) {
+                        Console.WriteLine(exception.Message.ToString());
+                    }
+                }
+            }
         }
+        
 
         public void add_grid(string name, string code)
         {
@@ -289,25 +406,38 @@ namespace Api_test01
         }
 
         private void 매수_btn_Click(object sender, EventArgs e)
-        { /*
-            if (가격_numeric.Value > 0 && 수량_numeric.Value > 0 && 계좌_label.Text.Length > 0)
-            {
-                int result = axKHOpenAPI1.SendOrder("현금매수주문", "5001", 계좌_label.Text, 1, target_code, int.Parse(수량_numeric.Value.ToString()), int.Parse(가격_numeric.Value.ToString()), "지정가", "");
+        { 
+            if (가격_numeric.Value > 0 && 수량_numeric.Value > 0 &&  계좌_label.Text.Length > 0) {
+                string acc = 계좌_label.Text;
+                string code = target_code;
+                int num = int.Parse(수량_numeric.Value.ToString());
+                int price = int.Parse(가격_numeric.Value.ToString());
+            
+                string sep = "00";
+
+                int result = axKHOpenAPI1.SendOrder("현금매수주문", "5001", acc, 1, code, num, price, sep, "");
+
                 if (result == 0)
                     MessageBox.Show("주문성공");
             }
-            */
+
         }
 
         private void 매도_btn_Click(object sender, EventArgs e)
-        {/*
-            if (가격_numeric.Value > 0 && 수량_numeric.Value > 0 && 계좌_label.Text.Length > 0)
-            {
-                int result = axKHOpenAPI1.SendOrder("현금매도주문", "5001", 계좌_label.Text, 2, target_code, int.Parse(수량_numeric.Value.ToString()), int.Parse(가격_numeric.Value.ToString()), "지정가", "");
+        {
+            if (가격_numeric.Value > 0 && 수량_numeric.Value > 0 && 계좌_label.Text.Length > 0) {
+                string acc = 계좌_label.Text;
+                string code = target_code;
+                int num = int.Parse(수량_numeric.Value.ToString());
+                int price = int.Parse(가격_numeric.Value.ToString());
+
+                string sep = "00";
+
+                int result = axKHOpenAPI1.SendOrder("현금매도주문", "5001", acc, 2, code, num, price, sep, "");
+
                 if (result == 0)
                     MessageBox.Show("주문성공");
             }
-            */
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -388,7 +518,15 @@ namespace Api_test01
             관심주식_datagridview.Font = MultiPanel.Font;
         }
 
-        private void btnChart_Leave(object sender, EventArgs e)
+		private void 종목이름01_label_Click(object sender, EventArgs e) {
+
+		}
+
+		private void btnBalance_Click(object sender, EventArgs e) {
+            childToMulti(checkbal);
+        }
+
+		private void btnChart_Leave(object sender, EventArgs e)
         {
             MultiPanel.Controls.Remove(children);
         }
