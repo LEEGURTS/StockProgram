@@ -18,6 +18,7 @@ namespace Api_test01
         public string[] all_Code; // 모든 주식코드
         public string[] all_Name; // 모든 주식명
         string target_code, target_name;// 주문에 사용
+        bool is_parent = false;
         int grid_count = 0;
         public List<List<string>> stock = new List<List<string>>();
         public static priceChart pricechart;
@@ -173,10 +174,14 @@ namespace Api_test01
                 종목코드_label.Text = target_code;
                 전일대비_label.Text = String.Format("{0:#,###}", dif);
                 현재가01_label.Text = String.Format("{0:#,###}", price);
+                가격_numeric.Value = price;
                 // 보유수량은 계좌잔고 평가 내역에서 code == 서버에서주는 code[i]이면
                 // 보유수량[i]를 반환, 같은게 없으면 0 반환
-                axKHOpenAPI1.SetInputValue("종목코드", target_code); // 종목코드 보냄
-                axKHOpenAPI1.CommRqData("주식호가", "opt10004", 0, "5002");
+                if (is_parent)
+                {
+                    axKHOpenAPI1.SetInputValue("종목코드", target_code); // 종목코드 보냄
+                    axKHOpenAPI1.CommRqData("주식호가", "opt10004", 0, "5002");
+                }
             }
 
             else if (e.sRQName == "시고종저") {
@@ -299,12 +304,26 @@ namespace Api_test01
                     }
                 }
             }
+            is_parent = true;
             관심주식_datagridview.Rows.Add(); // datagrid 행 추가
             관심주식_datagridview["관심주식_이름", grid_count].Value = name;
             관심주식_datagridview["관심주식_코드", grid_count].Value = code;
             grid_count++;
         }
-        
+
+        public void send_info_parent(string name, string code)
+        {
+            target_code = code;
+            target_name = name;
+            is_parent = false;
+            axKHOpenAPI1.SetInputValue("종목코드", target_code); // 종목코드 보냄
+            axKHOpenAPI1.CommRqData("종목정보요청", "opt10001", 0, "5000"); // 정보 주세요!
+                                                                      // onReceive어쩌구 시작
+            axKHOpenAPI1.SetInputValue("종목코드", target_code);
+            axKHOpenAPI1.CommRqData("시고종저", "opt10005", 0, "5000");
+
+        }
+
         public void OnEventConnect(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnEventConnectEvent e)
         {
             if (e.nErrCode == 0)
@@ -336,7 +355,23 @@ namespace Api_test01
                     all_Name[i] = axKHOpenAPI1.GetMasterCodeName(code);
                     i++;
                 }
+
+                정보조회();
+                
             }
+        }
+
+        private void 정보조회()
+        {
+            string account = 계좌_label.Text;
+            axKHOpenAPI1.SetInputValue("계좌번호", account);
+            axKHOpenAPI1.SetInputValue("비밀번호", "0000");
+            axKHOpenAPI1.SetInputValue("비밀번호입력매체구분", "00");
+            axKHOpenAPI1.SetInputValue("조회구분", "2");
+            axKHOpenAPI1.CommRqData("계좌잔고평가내역", "opw00018", 0, "5000");
+
+            btnBalance.Visible = true;
+            btnBalance.Enabled = true;
         }
 
         ///////////////////////////////////////////
@@ -371,6 +406,8 @@ namespace Api_test01
             newChild.BringToFront();
             newChild.Show();
         }
+
+
 
 
         ///////////////////////////////////////////
