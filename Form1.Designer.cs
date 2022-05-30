@@ -65,16 +65,16 @@ namespace Api_test01
             this.btnMakeSmall = new System.Windows.Forms.Button();
             this.btnMakeBig = new System.Windows.Forms.Button();
             this.삭제_btn = new System.Windows.Forms.Button();
-            this.추가01_btn = new System.Windows.Forms.Button();
             this.관심주식_datagridview = new System.Windows.Forms.DataGridView();
             this.관심주식_코드 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.관심주식_이름 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.추가01_btn = new System.Windows.Forms.Button();
             this.btnIESearch = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnChart = new System.Windows.Forms.Button();
             this.btnBalance = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.axKHOpenAPI1)).BeginInit();
             this.계좌정보_table.SuspendLayout();
             this.매수매도_table.SuspendLayout();
@@ -82,9 +82,9 @@ namespace Api_test01
             ((System.ComponentModel.ISupportInitialize)(this.가격_numeric)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.관심주식_datagridview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // axKHOpenAPI1
@@ -643,25 +643,6 @@ namespace Api_test01
             this.삭제_btn.Visible = false;
             this.삭제_btn.Click += new System.EventHandler(this.삭제_btn_Click);
             // 
-            // 추가01_btn
-            // 
-            this.추가01_btn.FlatAppearance.BorderSize = 0;
-            this.추가01_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.추가01_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.추가01_btn.Image = global::Api_test01.Properties.Resources.search_12_24;
-            this.추가01_btn.Location = new System.Drawing.Point(44, 219);
-            this.추가01_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.추가01_btn.Name = "추가01_btn";
-            this.추가01_btn.Size = new System.Drawing.Size(171, 41);
-            this.추가01_btn.TabIndex = 9;
-            this.추가01_btn.Text = "          검색";
-            this.추가01_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.추가01_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.추가01_btn.UseVisualStyleBackColor = true;
-            this.추가01_btn.Click += new System.EventHandler(this.추가_btn_Click);
-            this.추가01_btn.MouseEnter += new System.EventHandler(this.추가01_btn_MouseEnter);
-            this.추가01_btn.MouseLeave += new System.EventHandler(this.추가01_btn_MouseLeave);
-            // 
             // 관심주식_datagridview
             // 
             this.관심주식_datagridview.AllowUserToAddRows = false;
@@ -698,6 +679,46 @@ namespace Api_test01
             this.관심주식_이름.MinimumWidth = 6;
             this.관심주식_이름.Name = "관심주식_이름";
             this.관심주식_이름.ReadOnly = true;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Api_test01.Properties.Resources.user;
+            this.pictureBox3.Location = new System.Drawing.Point(747, 12);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(39, 43);
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Api_test01.Properties.Resources._1564506_close_exit_logout_power_icon;
+            this.pictureBox2.Location = new System.Drawing.Point(955, 12);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(39, 43);
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // 추가01_btn
+            // 
+            this.추가01_btn.FlatAppearance.BorderSize = 0;
+            this.추가01_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.추가01_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.추가01_btn.Image = global::Api_test01.Properties.Resources.search_12_24;
+            this.추가01_btn.Location = new System.Drawing.Point(44, 219);
+            this.추가01_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.추가01_btn.Name = "추가01_btn";
+            this.추가01_btn.Size = new System.Drawing.Size(171, 41);
+            this.추가01_btn.TabIndex = 9;
+            this.추가01_btn.Text = "          검색";
+            this.추가01_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.추가01_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.추가01_btn.UseVisualStyleBackColor = true;
+            this.추가01_btn.Click += new System.EventHandler(this.추가_btn_Click);
+            this.추가01_btn.MouseEnter += new System.EventHandler(this.추가01_btn_MouseEnter);
+            this.추가01_btn.MouseLeave += new System.EventHandler(this.추가01_btn_MouseLeave);
             // 
             // btnIESearch
             // 
@@ -751,34 +772,21 @@ namespace Api_test01
             // 
             // btnBalance
             // 
-            this.btnBalance.Location = new System.Drawing.Point(111, 279);
+            this.btnBalance.FlatAppearance.BorderSize = 0;
+            this.btnBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBalance.ForeColor = System.Drawing.Color.White;
+            this.btnBalance.Image = global::Api_test01.Properties.Resources.icons8_account_24;
+            this.btnBalance.Location = new System.Drawing.Point(44, 266);
             this.btnBalance.Name = "btnBalance";
-            this.btnBalance.Size = new System.Drawing.Size(75, 34);
+            this.btnBalance.Size = new System.Drawing.Size(171, 41);
             this.btnBalance.TabIndex = 14;
-            this.btnBalance.Text = "잔고확인";
+            this.btnBalance.Text = "     잔고확인";
+            this.btnBalance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBalance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBalance.UseVisualStyleBackColor = true;
             this.btnBalance.Click += new System.EventHandler(this.btnBalance_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Api_test01.Properties.Resources.user;
-            this.pictureBox3.Location = new System.Drawing.Point(747, 12);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(39, 43);
-            this.pictureBox3.TabIndex = 15;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Api_test01.Properties.Resources._1564506_close_exit_logout_power_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(955, 12);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 43);
-            this.pictureBox2.TabIndex = 14;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.btnBalance.MouseEnter += new System.EventHandler(this.btnBalance_MouseEnter);
+            this.btnBalance.MouseLeave += new System.EventHandler(this.btnBalance_MouseLeave);
             // 
             // Parent
             // 
@@ -816,9 +824,9 @@ namespace Api_test01
             ((System.ComponentModel.ISupportInitialize)(this.가격_numeric)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.관심주식_datagridview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

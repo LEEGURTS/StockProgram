@@ -60,6 +60,7 @@ namespace Api_test01
             this.chart1.Size = new System.Drawing.Size(800, 450);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            this.chart1.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chart1_AxisViewChanged);
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             // 
             // candleChart

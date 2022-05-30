@@ -71,6 +71,26 @@ namespace Api_test01.Properties {
         }
         
         /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap document {
+            get {
+                object obj = ResourceManager.GetObject("document", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_account_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_account_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
         internal static byte[] KoPub_Dotum_Bold {

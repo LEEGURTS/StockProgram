@@ -58,6 +58,7 @@ namespace Api_test01
             삭제_btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 삭제_btn.Width, 삭제_btn.Height, 30, 30));
             로그인_btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 로그인_btn.Width, 로그인_btn.Height, 10, 10));
             계좌정보조회_btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 계좌정보조회_btn.Width, 계좌정보조회_btn.Height, 10, 10));
+            btnBalance.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnBalance.Width, btnBalance.Height, 30, 30));
             추가01_btn.Enabled = false;
             추가01_btn.Visible = false;
             pictureBox3.Visible = false;          
@@ -455,8 +456,7 @@ namespace Api_test01
         {
             candleChart newChild = new candleChart();
             newChild.stock.Clear();
-            newChild.stock = this.stock;
-            children = newChild;
+            newChild.stock = this.stock.ToList();
             //newChild.SetStockList();
             childToMulti(newChild);
         }
@@ -532,7 +532,17 @@ namespace Api_test01
             childToMulti(checkbal);
         }
 
-		private void btnChart_Leave(object sender, EventArgs e)
+        private void btnBalance_MouseEnter(object sender, EventArgs e)
+        {
+            btnBalance.BackColor = Color.FromArgb(118, 106, 206);
+        }
+
+        private void btnBalance_MouseLeave(object sender, EventArgs e)
+        {
+            btnBalance.BackColor = Color.FromArgb(83, 66, 194);
+        }
+
+        private void btnChart_Leave(object sender, EventArgs e)
         {
             MultiPanel.Controls.Remove(children);
         }
