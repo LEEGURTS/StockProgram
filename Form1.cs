@@ -580,6 +580,10 @@ namespace Api_test01
             {
                 return;
             }
+            if(this.관심주식_datagridview.SelectedRows.Count == 0)
+            {
+                return;
+            }
             DataGridViewRow row = 관심주식_datagridview.SelectedRows[0];
             string data = row.Cells[1].Value.ToString();
             System.Diagnostics.Process.Start("https://finance.daum.net/news?keyword=" + data);      
@@ -635,6 +639,8 @@ namespace Api_test01
             MultiPanel.Tag = 관심주식_datagridview;
             관심주식_datagridview.Size = MultiPanel.Size;
             관심주식_datagridview.Font = MultiPanel.Font;
+            관심주식_datagridview.BringToFront();
+            관심주식_datagridview.Show();
         }
 
 		private void 종목이름01_label_Click(object sender, EventArgs e) {
