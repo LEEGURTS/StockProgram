@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -97,9 +98,10 @@ namespace Api_test01
                         axKHOpenAPI1.CommRqData("종목정보요청", "opt10001", 0, "5000"); // 정보 주세요!
                         // onReceive어쩌구 시작
               
-
                         axKHOpenAPI1.SetInputValue("종목코드", target_code);
                         axKHOpenAPI1.CommRqData("시고종저", "opt10005", 0, "5000");
+
+                        is_parent = true;
                     }
 
                 }
@@ -304,11 +306,13 @@ namespace Api_test01
                     }
                 }
             }
-            is_parent = true;
+            //is_parent = true;
             관심주식_datagridview.Rows.Add(); // datagrid 행 추가
             관심주식_datagridview["관심주식_이름", grid_count].Value = name;
             관심주식_datagridview["관심주식_코드", grid_count].Value = code;
             grid_count++;
+
+            CsvDataSave(계좌_label.Text);
         }
 
         public void send_info_parent(string name, string code)
@@ -322,6 +326,74 @@ namespace Api_test01
             axKHOpenAPI1.SetInputValue("종목코드", target_code);
             axKHOpenAPI1.CommRqData("시고종저", "opt10005", 0, "5000");
 
+        }
+
+        public void CsvDataSave(string account)
+        {
+            if (관심주식_datagridview.Rows.Count == 0) return;
+
+            string filename = account + ".csv";
+
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+
+            FileStream f = new FileStream(filename, FileMode.Create, FileAccess.Write);
+            var csvWriter = new StreamWriter(f, Encoding.UTF8);
+
+            foreach (DataGridViewRow row in 관심주식_datagridview.Rows)
+            {
+                for (int i = 0; i < 관심주식_datagridview.Columns.Count; i++)
+                {
+                    csvWriter.Write(row.Cells[i].Value);
+                    if (i != 관심주식_datagridview.Columns.Count - 1)
+                    {
+                        csvWriter.Write(',');
+                    }
+                }
+                csvWriter.Write(csvWriter.NewLine);
+            }
+
+            csvWriter.Flush();
+            csvWriter.Close();
+            f.Close();
+            
+        }
+
+        public void CsvDataLoad(string account)
+        {
+            string[] name = new string[100];
+            string[] code = new string[100];
+            string filename = account + ".csv";
+
+            if (File.Exists(filename))
+            {
+                var b = new StreamReader(filename);
+                int file_size = 0;
+
+                while (!b.EndOfStream)
+                {
+                    string line = b.ReadLine();
+                    string[] value = line.Split(',');
+
+                    name[file_size] = value[1];
+                    code[file_size] = value[0];
+                    file_size++;
+                }
+
+                /// 데이터 불러오기
+                관심주식_datagridview.Rows.Clear();
+                grid_count = 0;
+                for (; grid_count < file_size; grid_count++)
+                {
+                    관심주식_datagridview.Rows.Add(); // datagrid 행 추가
+                    관심주식_datagridview["관심주식_이름", grid_count].Value = name[grid_count];
+                    관심주식_datagridview["관심주식_코드", grid_count].Value = code[grid_count];
+                }
+
+                b.Close();
+            }
         }
 
         public void OnEventConnect(object sender, AxKHOpenAPILib._DKHOpenAPIEvents_OnEventConnectEvent e)
@@ -424,6 +496,8 @@ namespace Api_test01
 
             btnBalance.Visible = true;
             btnBalance.Enabled = true;
+
+            CsvDataLoad(account);
         }
 
         private void 추가_btn_Click(object sender, EventArgs e)
@@ -447,6 +521,8 @@ namespace Api_test01
                 관심주식_datagridview.Rows.Remove(관심주식_datagridview.Rows[selectRowindex]);
                 grid_count--;
             }
+
+            CsvDataSave(계좌_label.Text);
         }
 
         private void 매수_btn_Click(object sender, EventArgs e)
